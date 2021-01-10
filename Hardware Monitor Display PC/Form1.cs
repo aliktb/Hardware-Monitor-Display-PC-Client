@@ -223,6 +223,8 @@ namespace Hardware_Monitor_Display_PC
             }
         }
 
+
+        
         private void collect_data()
         {
             if (isAdministrator == true)
@@ -476,6 +478,11 @@ namespace Hardware_Monitor_Display_PC
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

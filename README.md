@@ -31,4 +31,5 @@ Temperature data obtained from [Open Hardware Monitor](https://github.com/openha
 
 
 Inspiration and original code: https://github.com/logchan/open-hardware-monitor-arduino
+
 Forked from: https://github.com/octal-ip/open-hardware-monitor-arduino

@@ -1,33 +1,34 @@
-## Open Hardware Monitor - Arduino
+## Hardware Monitor Display - Pi
 
-Read CPU and GPU temperature readings, then display them as a scrolling graph on an STM32 Arduino TFT display.
+Read CPU and GPU temperature readings, then display them as a set of gauges on an external display.
 
-Full details and build instructions: https://hackaday.io/project/165236-windows-system-performance-display
 
-The full build in action: https://cdn.hackaday.io/files/1652367069457024/graph.gif
 
 -----
 
 ### Requirements
 
-1. Visual Studio 2017 with latest update
-2. Windows 10 with .Net Framework 4.6.2
-3. Arduino with ILI9341 TFT display
-4. Official Arduino IDE
-5. STM32 hardware libraries for the Arduino IDE
+1. Visual Studio 2017 or 2019 with latest update
+2. Windows 10 (admin account) with .Net Framework 4.6.2
+3. Raspberry Pi (tested with model 3B+ but should work with any variant) with Micro SD card and monitor
+4. ethernet cable and optional USB to ethernet dongle if no spare ethernet is available on PC
+
 
 ### Usage
 
-1. Download the latest source code (i.e. master zip) of [Open Hardware Monitor](https://github.com/openhardwaremonitor/openhardwaremonitor) and open it with VS2017. Then,
-change the target platform of `OpenHardwareMonitorLib` to `.Net Framework 4.6.2`. Build this project (there is no need to build its GUI).
-2. Download this project.
-3. Compile and run.
+1. Download a fresh copy of Raspbian and install to micro SD (any Pi) or USB (only works on Pi 4)
+2. Configure static IP as 190.160.1.5 (not like the common subnet of 192.168.xxx.xxx)
+3. Place python files in a new directory in the user's home directory eg. Documents, Downloads etc.
+4. Append the following line at the end of the file:
+    @/usr/bin/python3 /home/USER/DIRECTORY_OF_PYTHON_FILES/main.py
+5. Connect Pi to PC via ethernet cable. Can be done with PC motherboard's LAN input or USB to ethernet dongle
+6. Connect monitor to Pi vid HDMI. (Currently works with resolution of 1280 x 720)
+7. Restart the Pi
 
 ### Credits
 
 Temperature data obtained from [Open Hardware Monitor](https://github.com/openhardwaremonitor/openhardwaremonitor)'s `OpenHardwareMonitorLib`
 
-Icons made by [Pixel Buddha](https://www.flaticon.com/authors/pixel-buddha) from [www.flaticon.com](https://www.flaticon.com/) 
-is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
 
-Inspiration and original code forked from https://github.com/logchan/open-hardware-monitor-arduino
+Inspiration and original code: https://github.com/logchan/open-hardware-monitor-arduino
+Forked from: https://github.com/octal-ip/open-hardware-monitor-arduino

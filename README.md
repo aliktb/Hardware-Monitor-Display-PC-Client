@@ -1,8 +1,8 @@
-## Hardware Monitor Display - Pi
+## Hardware Monitor Display - PC Client
 
 Read CPU and GPU temperature readings, then display them as a set of gauges on an external display.
 
-
+This is the Windows Forms Application to be run on the Windows PC. For the Raspberry Pi python scripts see this repository: https://github.com/aliktb/Hardware-Display-Monitor-Pi-Server
 
 -----
 
@@ -16,14 +16,8 @@ Read CPU and GPU temperature readings, then display them as a set of gauges on a
 
 ### Usage
 
-1. Download a fresh copy of Raspbian and install to micro SD (any Pi) or USB (only works on Pi 4)
-2. Configure static IP as 190.160.1.5 (not like the common subnet of 192.168.xxx.xxx)
-3. Place python files in a new directory in the user's home directory eg. Documents, Downloads etc.
-4. Append the following line at the end of the file:
-    @/usr/bin/python3 /home/USER/DIRECTORY_OF_PYTHON_FILES/main.py
-5. Connect Pi to PC via ethernet cable. Can be done with PC motherboard's LAN input or USB to ethernet dongle
-6. Connect monitor to Pi vid HDMI. (Currently works with resolution of 1280 x 720)
-7. Restart the Pi
+1. Configure ethernet to run on subnet `190.160.1.xxx` either with the onboard motherboard LAN or with a USB to ethernet adapter. Static IPs can be assigned through Network and Sharing Center in Control Panel and configuring the IPV4 address manually for the ethernet adapter. The subnet should not interfere with existing networks typically using subnet `192.168.xxx.xxx`. Allowing custom subnets is not yet available.
+2. Compile with Windows Form Application using Visual Studio using .NET Framework 4.6.2. 
 
 ### Credits
 

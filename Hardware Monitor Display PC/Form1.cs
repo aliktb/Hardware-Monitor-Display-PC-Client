@@ -307,17 +307,7 @@ namespace Hardware_Monitor_Display_PC
             Log($"Exception {title} ({ex.GetType().FullName}): {ex.Message}");
         }
 
-        private void collect_sample() {
-
-            cpu_load = textBox2.Text;
-            cpu_temperature = textBox4.Text;
-            gpu_load = textBox5.Text;
-            gpu_temperature = textBox6.Text;
-            RAM_load = textBox7.Text;
-            front_fan = textBox8.Text;
-            cpu_fan = textBox9.Text;
-            rear_fan = textBox10.Text;
-        }
+    
         private void Send_to_pi()
         {
 
@@ -335,6 +325,38 @@ namespace Hardware_Monitor_Display_PC
         }
 
 
+        private string dropdown_to_variable(ComboBox propertyName) 
+        {
+            //switch (gauge_8_dropdown.SelectedIndex)
+            switch  (propertyName.SelectedIndex)
+            {
+               
+                case 0:
+                    return cpu_load;
+                case 1:
+                    return cpu_temperature;
+                case 2:
+                    return gpu_load;
+                case 3:
+                    return gpu_temperature;
+                case 4:
+                    return RAM_load;
+                case 5:
+                    return front_fan;
+                case 6:
+                    return cpu_fan;
+                case 7:
+                    return rear_fan;
+                default:
+                    return "0";
+            }
+
+
+            
+
+        }
+
+
 
 
         private void tick_object(object sender, EventArgs e)
@@ -343,7 +365,9 @@ namespace Hardware_Monitor_Display_PC
             {
 
                 collect_data();
-                message = cpu_load + "," + cpu_temperature + "," + gpu_load + "," + gpu_temperature + "," + RAM_load + "," + front_fan + "," + cpu_fan + "," + rear_fan;
+                message = dropdown_to_variable(Gauge_1_dropdown) + "," + dropdown_to_variable(Gauge_2_dropdown) + "," + dropdown_to_variable(Gauge_3_dropdown) + "," +
+                     dropdown_to_variable(Gauge_4_dropdown) + "," + dropdown_to_variable(Gauge_5_dropdown) + "," + dropdown_to_variable(Gauge_6_dropdown) + "," +
+                    dropdown_to_variable(Gauge_7_dropdown) + "," + dropdown_to_variable(Gauge_8_dropdown);
                 Send_to_pi();
             }
 
@@ -446,46 +470,14 @@ namespace Hardware_Monitor_Display_PC
 
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-           /* try
-            {
-                   _hardwareData.Clear();
-                   _computer.Traverse(_updater);
-                   _computer.Traverse(_sensorVisitor);
+      
 
-                   cpu_name = GetHardwareData("cpuName");
-                   message = cpu_name;
-                   Log("Data sent " + message);
-               }
-
-
-               catch
-               {
-                   Log("Exception error line 446");
-               }
-                */
-            }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
+       
     }
 
     }
